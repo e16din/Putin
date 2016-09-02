@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 public final class Putin {
@@ -46,6 +47,11 @@ public final class Putin {
 
     public static Putin the(Bundle bundle) {
         mBundle = bundle;
+        return instance();
+    }
+
+    public static Putin newContainer() {
+        mMap = new HashMap();
         return instance();
     }
 
