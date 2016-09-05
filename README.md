@@ -5,8 +5,7 @@ A common interface for filling containers.
 ```java
 Putin.the(map)
         .pair("Email", email)
-        .pair("UserId", id)
-        .getMap();
+        .pair("UserId", id);
         
 Putin.newMap()
         .pair("Email", email)
