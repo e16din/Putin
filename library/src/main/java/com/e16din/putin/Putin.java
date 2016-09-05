@@ -24,34 +24,34 @@ public final class Putin {
     }
 
 
-    private static Map mMap;
-    private static SparseArray mSparseArray;
-    private static JSONObject mJsonObject;
-    private static Bundle mBundle;
+    private Map mMap;
+    private SparseArray mSparseArray;
+    private JSONObject mJsonObject;
+    private Bundle mBundle;
 
 
     public static Putin the(Map map) {//todo: check twice call
-        mMap = map;
+        instance().setMap(map);
         return instance();
     }
 
     public static Putin the(SparseArray sparseArray) {
-        mSparseArray = sparseArray;
+        instance().setSparseArray(sparseArray);
         return instance();
     }
 
     public static Putin the(JSONObject jsonObject) {
-        mJsonObject = jsonObject;
+        instance().setJsonObject(jsonObject);
         return instance();
     }
 
     public static Putin the(Bundle bundle) {
-        mBundle = bundle;
+        instance().setBundle(bundle);
         return instance();
     }
 
-    public static Putin newContainer() {
-        mMap = new HashMap();
+    public static Putin newMap() {
+        instance().setMap(new HashMap());
         return instance();
     }
 
@@ -89,7 +89,7 @@ public final class Putin {
         return instance();
     }
 
-    public Putin pair(Object key, Object value) {
+    public Putin pair(Object key, Serializable value) {
         if (mMap != null) {
             mMap.put(key, value);
         }
@@ -167,7 +167,33 @@ public final class Putin {
         return null;
     }
 
+    public <KEY, VALUE> Map getMap() {
+        if (mMap != null) {
+            return (Map<KEY, VALUE>) mMap;
+        }
+
+        return null;
+    }
+
+
     private static String getKeyString(int key) {
         return KEY_PREFIX + key;
+    }
+
+
+    public void setMap(Map map) {
+        mMap = map;
+    }
+
+    public void setSparseArray(SparseArray sparseArray) {
+        mSparseArray = sparseArray;
+    }
+
+    public void setJsonObject(JSONObject jsonObject) {
+        mJsonObject = jsonObject;
+    }
+
+    public void setBundle(Bundle bundle) {
+        mBundle = bundle;
     }
 }
